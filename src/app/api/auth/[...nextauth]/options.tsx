@@ -7,11 +7,10 @@ import { connect } from "@/db/config";
 import User from "@/models/user";
 import bcrypt from "bcryptjs";
 import { JWT } from "next-auth/jwt";
-import { AdapterUser } from "next-auth/adapters";
-import { Model } from "mongoose";
 import { CustomUser, CustomSession } from "@/type";
 
 export const authOptions: AuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/login",
   },
