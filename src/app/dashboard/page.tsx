@@ -7,6 +7,7 @@ import { CustomUser } from "@/type";
 import User from "@/models/user";
 import UploadImage from "./uploadImage";
 import Image from "next/image";
+import { connect } from "@/db/config";
 
 export default async function Dashboard() {
   const session = await getServerSession(authOptions);
@@ -14,6 +15,7 @@ export default async function Dashboard() {
     redirect("/login");
   }
 
+  connect();
   const user = session.user as CustomUser;
 
   if (user.role?.toLocaleUpperCase() === "USER") {
